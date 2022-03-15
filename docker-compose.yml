@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      dockerfile: Dockerfile
+    container_name: nodejs.app
+    volumes:
+      - ./:/app
+    ports:
+      - 8080:8080
+
+  mongo-service:
+    image: mongo
+    restart: always
+    logging:
+      driver: none
+    volumes:
+      - ./mongodb/db:/data/db
+    ports:
+      - 27017:27017
