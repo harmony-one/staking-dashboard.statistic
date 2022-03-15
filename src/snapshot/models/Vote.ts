@@ -1,11 +1,11 @@
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
 
 interface Vote {
-  _id: string,
-  voter: string,
+  _id: string;
+  voter: string;
   proposal: {
-    id: string,
-  }
+    id: string;
+  };
 }
 
 const voteSchema = new mongoose.Schema<Vote>({
@@ -13,7 +13,7 @@ const voteSchema = new mongoose.Schema<Vote>({
   voter: String,
   proposal: {
     id: String,
-  }
+  },
 });
 
 export const VoteModel = mongoose.model('Vote', voteSchema);

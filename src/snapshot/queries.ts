@@ -22,7 +22,7 @@ export const queryProposals = `query ProposalList($first: Int!, $skip: Int!) {
       name
     }
   }
-}`
+}`;
 
 export const queryVoteList = `query VoteList($proposalId: String!, $first: Int!, $skip: Int!) {
   votes (
@@ -46,4 +46,4 @@ export const queryVoteList = `query VoteList($proposalId: String!, $first: Int!,
     }
   }
 }
-`
+`;

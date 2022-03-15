@@ -4,11 +4,11 @@ services:
   app:
     build:
       dockerfile: Dockerfile
-    container_name: nodejs.app
-    volumes:
-      - ./:/app
+    container_name: staking-dashboard.statistic
     ports:
-      - 8080:8080
+      - 3000:3000
+    environment:
+      DATABASE_URL: 'mongodb://mongo-service:27017/MyDb'
 
   mongo-service:
     image: mongo

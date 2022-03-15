@@ -1,11 +1,10 @@
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
 
 interface Proposal {
   _id: string;
   title: string;
   state: string;
 }
-
 
 const proposalSchema = new mongoose.Schema<Proposal>({
   _id: String,
@@ -14,6 +13,5 @@ const proposalSchema = new mongoose.Schema<Proposal>({
 });
 
 export const ProposalModel = mongoose.model('Proposal', proposalSchema);
-
 
 // ProposalModel.

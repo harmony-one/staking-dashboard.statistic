@@ -3,15 +3,18 @@
 FROM node:16 AS builder
 WORKDIR /opt/app
 
+COPY src ./src
 COPY package*.json ./
-RUN npm install --omit optional
-COPY build/docker .
+COPY tsconfig.build.json ./
+COPY tsconfig.json ./
+
+RUN npm install
 RUN npm run build
 RUN rm -rf node_modules && npm i --production --ignore-scripts
 
 # Run Stage
 # ---
-FROM gcr.io/distroless/nodejs:16
+FROM node:16
 
 USER nobody
 
