@@ -1,6 +1,6 @@
 import { loadProposalList, loadVoteList } from './dal';
-import { ProposalModel } from './models/Proposal';
-import { VoteModel } from './models/Vote';
+import { ProposalModel } from '../database/models/Proposal';
+import { VoteModel } from '../database/models/Vote';
 
 const SKIP = 0;
 const FIRST = 30;

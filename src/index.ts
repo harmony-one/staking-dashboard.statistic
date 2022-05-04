@@ -1,8 +1,9 @@
 import { dbConnect } from './database';
 import { syncSnapshot } from './snapshot';
-import { ProposalModel } from './snapshot/models/Proposal';
-import { VoteModel } from './snapshot/models/Vote';
+import { ProposalModel } from './database/models/Proposal';
+import { VoteModel } from './database/models/Vote';
 import express from 'express';
+import { syncHarmonyGov } from './harmonygov';
 
 const app = express();
 const PORT = 3000;
@@ -25,11 +26,19 @@ app.get('/validators/:validatorId/votes', async (req, res) => {
   });
 });
 
-const startSync = async () => {
+const startSyncStapshot = async () => {
   await syncSnapshot();
 
   setTimeout(() => {
-    syncSnapshot();
+    startSyncStapshot();
+  }, 1000 * 60 * 60 * 24);
+};
+
+const startSyncHarmonyGov = async () => {
+  await syncHarmonyGov();
+
+  setTimeout(() => {
+    startSyncHarmonyGov();
   }, 1000 * 60 * 60 * 24);
 };
 
@@ -39,7 +48,8 @@ const main = async () => {
   });
 
   await dbConnect();
-  startSync();
+  startSyncStapshot();
+  startSyncHarmonyGov();
 };
 
 main();
