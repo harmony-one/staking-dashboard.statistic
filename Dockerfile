@@ -25,4 +25,4 @@ ARG NODE_ENV=production
 ENV NODE_ENV $NODE_ENV
 ENV PATH /opt/node_app/node_modules/.bin:$PATH
 
-CMD ["dist/index.js"]
+CMD ["node", "dist/index.js"]

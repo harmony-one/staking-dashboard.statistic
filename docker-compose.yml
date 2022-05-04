@@ -2,11 +2,10 @@ version: '3.8'
 
 services:
   app:
-    build:
-      dockerfile: Dockerfile
-      context: .
-    container_name: staking-dashboard.statistic
+    image: ahiipsa/staking-dashboard-statistic:0.0.3
     restart: always
+    depends_on:
+      - mongo-service
     ports:
       - 3000:3000
     environment:
