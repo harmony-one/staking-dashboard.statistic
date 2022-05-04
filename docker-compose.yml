@@ -4,6 +4,7 @@ services:
   app:
     build:
       dockerfile: Dockerfile
+      context: .
     container_name: staking-dashboard.statistic
     restart: always
     ports:
