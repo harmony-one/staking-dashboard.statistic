@@ -5,6 +5,7 @@ services:
     build:
       dockerfile: Dockerfile
     container_name: staking-dashboard.statistic
+    restart: always
     ports:
       - 3000:3000
     environment:
