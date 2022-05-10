@@ -16,6 +16,7 @@ RUN rm -rf node_modules && npm i --production --ignore-scripts
 # ---
 FROM node:16
 
+RUN groupadd nobody 
 USER nobody
 
 COPY --chown=nobody --from=builder /opt/app /opt/app
